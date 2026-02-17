@@ -1,0 +1,31 @@
+{% liquid 
+assign prdt =product | default: closest.product
+assign care =prdt.metafields.custom.care_instructions  
+assign material =prdt.metafields.custom.materials_used 
+%}
+<div class="wrapformeta">
+    {% if care !=blank%}
+        <h4>care_instructions</h4>
+        <ul>
+        {% for cares in care.value %}
+        <li><p>{{ cares }}</p></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>there is no care_instructions for this product</p>
+        {% endif %}
+
+
+       
+    {% if material !=blank%}
+        <h4>material_used</h4>
+        <ul>
+        {% for mat in material.value %}
+       <li> <p>{{ mat }}</p></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>there is no material_used for this product</p>
+        {% endif %}
+        </div>
+

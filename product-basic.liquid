@@ -1,0 +1,20 @@
+{% assign prdt= product | default:closest.product %}
+{% if prdt %}
+  <div class="title">
+    {% if prdt.featured_image != blank %}
+
+    {{ prdt.featured_image | image_url: width: 100 | image_tag:
+    width:prdt.featured_image.width,
+  height: prdt.featured_image.height,
+class:"prdt_image",
+alt: prdt.title}}
+{% endif %}
+    <h1>{{ prdt.title }}</h1>
+
+   <h2> <p class ="price">{{ prdt.price | money }}</p></h2>
+
+
+   <b> <p>{{ prdt.description | strip_html |truncate: 150 }}</p></b>
+      </div>
+    {% endif %}
+

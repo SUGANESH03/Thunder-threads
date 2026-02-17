@@ -1,0 +1,19 @@
+{% liquid 
+assign prdt =product | default: closest.product
+assign features =prdt.metafields.custom.features 
+
+%}
+<div class="wrapformeta">
+    {% if features !=blank%}
+
+        <h4>features</h4>
+        <ul>
+        {% for featur in features.value %}
+       <li>{{ featur }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>there is no features for this product</p>
+        {% endif %}
+        </div>
+
